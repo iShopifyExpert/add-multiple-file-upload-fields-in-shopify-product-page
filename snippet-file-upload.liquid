@@ -1,0 +1,26 @@
+<div class="field" style="margin-top:25px;">
+  <div>
+    <label class="label" for="file_upload">File Upload</label>
+  </div>
+  <input class="field__input" type="file" id="file_uploadd" required="" name="properties[Upload]" multiple="">
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var max_fields = 10;
+    var wrapper = $(".input_fields_wrap");
+    var add_button = $(".add_field_button");
+    var x = 1;
+    $(add_button).click(function(e) {
+      e.preventDefault();
+      if(x < max_fields) {
+        x++;
+        $(wrapper).append('<div><input type="file" class="field__input" id="file_upload-'+x+'" name="properties[File Upload '+x+']"/><a href="#" class="remove_field">Remove</a></div>');
+      }
+    });
+    $(wrapper).on("click",".remove_field", function(e) {
+      e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+  });
+</script>
